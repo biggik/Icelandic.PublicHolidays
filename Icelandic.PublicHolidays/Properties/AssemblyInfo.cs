@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Icelandic.PublicHolidays")]
-[assembly: AssemblyDescription("Útreiknigur á almennu frídögum á Íslandi")]
+[assembly: AssemblyDescription("Útreikningur á almennum frídögum á Íslandi")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Status ehf")]
 [assembly: AssemblyProduct("Icelandic.PublicHolidays")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
+[assembly: AssemblyCopyright("Copyright © 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
