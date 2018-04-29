@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Icelandic.PublicHolidays.Tests.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Icelandic.PublicHolidays.Tests
@@ -136,6 +137,25 @@ namespace Icelandic.PublicHolidays.Tests
             var gen = new Generator(year);
             Assert.AreEqual(16, gen.AlmennirFrídagar.Count());
             Assert.AreEqual(13, gen.AðrirDagar.Count());
+        }
+        [TestMethod]
+        public void TestEaster()
+        {
+            foreach (var data in EasterDates.Values)
+            {
+                var gen = new Generator(data.Year);
+                Assert.AreEqual(data, gen.Páskadagur);
+            }
+        }
+
+        [TestMethod]
+        public void TestSumardagurinnFyrsti()
+        {
+            foreach (var data in SumardagurinnFyrstiDates.Values)
+            {
+                var gen = new Generator(data.Year);
+                Assert.AreEqual(data, gen.SumardagurinnFyrsti);
+            }
         }
     }
 }
