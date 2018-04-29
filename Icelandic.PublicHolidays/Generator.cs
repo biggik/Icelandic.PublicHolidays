@@ -46,7 +46,9 @@ namespace Icelandic.PublicHolidays
             FyrstiVetrardagur,
             Bolludagur,
             Sprengidagur,
-            Öskudagur
+            Öskudagur,
+            Mæðradagurinn,
+            Feðradagurinn
         }
 
         public int Year { get; }
@@ -89,6 +91,14 @@ namespace Icelandic.PublicHolidays
         public DateTime Bolludagur => Lent.AddDays(-2);
         public DateTime Sprengidagur => Lent.AddDays(-1);
         public DateTime Öskudagur => Lent;
+
+        public DateTime Mæðradagurinn => Year >= 1934
+            ? FirstDayAfter(FirstDayAfter(new DateTime(Year, 5, 1), DayOfWeek.Sunday).AddDays(1), DayOfWeek.Sunday)
+            : DateTime.MinValue;
+        public DateTime Feðradagurinn =>
+            Year >= 2006
+            ? FirstDayAfter(FirstDayAfter(new DateTime(Year, 11, 1), DayOfWeek.Sunday).AddDays(1), DayOfWeek.Sunday)
+            : DateTime.MinValue;
 
         private void CalculateDates()
         {
@@ -156,6 +166,9 @@ namespace Icelandic.PublicHolidays
                     AddOther(Bolludagur, "Bolludagur", HolidayDates.Bolludagur);
                     AddOther(Sprengidagur, "Sprengidagur", HolidayDates.Sprengidagur);
                     AddOther(Öskudagur, "Öskudagur", HolidayDates.Öskudagur);
+
+                    AddOther(Mæðradagurinn, "Mæðradagurinn", HolidayDates.Mæðradagurinn);
+                    AddOther(Feðradagurinn, "Feðradagurinn", HolidayDates.Feðradagurinn);
 
                     AddOther(Þorláksmessa, "Þorláksmessa", HolidayDates.Þorláksmessa);
 
