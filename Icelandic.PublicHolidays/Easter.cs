@@ -80,7 +80,6 @@ namespace Icelandic.PublicHolidays
             var tE = ((20 - tB - tC - tD) % 7) + 1;
 
             int d = tA + tE;
-            int m = 0;
 
             if ((tA + tE) > 31)
             {
@@ -88,7 +87,7 @@ namespace Icelandic.PublicHolidays
             }
             else
             {
-                return new DateTime(year, m, d);
+                return new DateTime(year, 3, d);
             }
         }
     }
