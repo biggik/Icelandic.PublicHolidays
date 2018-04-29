@@ -54,6 +54,8 @@ namespace Icelandic.PublicHolidays.Tests
             Assert.AreEqual(new DateTime(year, 5, 13), gen.Mæðradagurinn);
             Assert.AreEqual(DateTime.MinValue, gen.Feðradagurinn);
 
+            Assert.AreEqual(new DateTime(year, 6, 10), gen.Sjómannadagurinn);
+
             ValidateStandardDates(gen, year);
 
             Assert.AreEqual(new DateTime(year, 3, 21), gen.Vorjafndægur);
@@ -87,6 +89,8 @@ namespace Icelandic.PublicHolidays.Tests
 
             Assert.AreEqual(new DateTime(year, 5, 14), gen.Mæðradagurinn);
             Assert.AreEqual(DateTime.MinValue, gen.Feðradagurinn);
+
+            Assert.AreEqual(new DateTime(year, 6, 4), gen.Sjómannadagurinn);
 
             ValidateStandardDates(gen, year);
 
@@ -122,6 +126,8 @@ namespace Icelandic.PublicHolidays.Tests
             Assert.AreEqual(new DateTime(year, 5, 10), gen.Mæðradagurinn);
             Assert.AreEqual(new DateTime(year, 11, 8), gen.Feðradagurinn);
 
+            Assert.AreEqual(new DateTime(year, 6, 7), gen.Sjómannadagurinn);
+
             ValidateStandardDates(gen, year);
 
             Assert.AreEqual(new DateTime(year, 3, 20), gen.Vorjafndægur);
@@ -136,8 +142,9 @@ namespace Icelandic.PublicHolidays.Tests
             int year = 2000;
             var gen = new Generator(year);
             Assert.AreEqual(16, gen.AlmennirFrídagar.Count());
-            Assert.AreEqual(13, gen.AðrirDagar.Count());
+            Assert.AreEqual(14, gen.AðrirDagar.Count());
         }
+
         [TestMethod]
         public void TestEaster()
         {

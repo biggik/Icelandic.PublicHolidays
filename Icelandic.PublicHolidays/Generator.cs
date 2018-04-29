@@ -48,7 +48,8 @@ namespace Icelandic.PublicHolidays
             Sprengidagur,
             Öskudagur,
             Mæðradagurinn,
-            Feðradagurinn
+            Feðradagurinn,
+            Sjómannadagurinn
         }
 
         public int Year { get; }
@@ -99,6 +100,17 @@ namespace Icelandic.PublicHolidays
             Year >= 2006
             ? FirstDayAfter(FirstDayAfter(new DateTime(Year, 11, 1), DayOfWeek.Sunday).AddDays(1), DayOfWeek.Sunday)
             : DateTime.MinValue;
+
+        public DateTime Sjómannadagurinn
+        {
+            get
+            {
+                var candidate = FirstDayAfter(new DateTime(Year, 6, 1), DayOfWeek.Sunday);
+                if (candidate == Hvítasunnudagur)
+                    return FirstDayAfter(candidate.AddDays(1), DayOfWeek.Sunday);
+                return candidate;
+            }
+        }
 
         private void CalculateDates()
         {
@@ -166,6 +178,8 @@ namespace Icelandic.PublicHolidays
                     AddOther(Bolludagur, "Bolludagur", HolidayDates.Bolludagur);
                     AddOther(Sprengidagur, "Sprengidagur", HolidayDates.Sprengidagur);
                     AddOther(Öskudagur, "Öskudagur", HolidayDates.Öskudagur);
+
+                    AddOther(Sjómannadagurinn, "Sjómannadagurinn", HolidayDates.Sjómannadagurinn);
 
                     AddOther(Mæðradagurinn, "Mæðradagurinn", HolidayDates.Mæðradagurinn);
                     AddOther(Feðradagurinn, "Feðradagurinn", HolidayDates.Feðradagurinn);
