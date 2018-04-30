@@ -17,6 +17,9 @@ namespace Icelandic.PublicHolidays
         /// <returns>Easter date for the year</returns>
         internal static DateTime CalculateForYear(int year)
         {
+            if (year < 1583 || year > 4099)
+                throw new ArgumentException("Páskaútreikningur er aðeins studdur fyrir ártöl á bilinu 1583 - 4099");
+
             // Easter Sunday is the Sunday following the Paschal Full Moon
             // (PFM) date for the year
             // This algorithm is an arithmetic interpretation of the 3 step
