@@ -201,6 +201,17 @@ namespace Icelandic.PublicHolidays.Tests
         }
 
         [TestMethod]
+        public void TestSumarOgVetrardagur()
+        {
+            foreach (var year in FyrstiVetSumDates.Values.GroupBy(x => x.date.Year))
+            {
+                var gen = new Generator(year.Key);
+                Assert.AreEqual(gen.SumardagurinnFyrsti, year.First(x => x.holidayDate == Generator.HolidayDates.SumardagurinnFyrsti).date);
+                Assert.AreEqual(gen.FyrstiVetrardagur, year.First(x => x.holidayDate == Generator.HolidayDates.FyrstiVetrardagur).date);
+            }
+        }
+
+        [TestMethod]
         public void TestBóndagurinn()
         {
             foreach (var data in BóndadagurinnDates.Values)
