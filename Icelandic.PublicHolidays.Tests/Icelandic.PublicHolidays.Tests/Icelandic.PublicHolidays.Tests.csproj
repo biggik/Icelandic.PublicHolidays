@@ -52,6 +52,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\CalendarDates.cs" />
+    <Compile Include="Data\BóndadagurinnDates.cs" />
     <Compile Include="Data\SumardagurinnFyrstiDates.cs" />
     <Compile Include="Data\EasterDates.cs" />
     <Compile Include="Tests.cs" />

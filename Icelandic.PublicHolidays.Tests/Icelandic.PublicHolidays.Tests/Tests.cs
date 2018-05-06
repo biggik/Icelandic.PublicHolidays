@@ -9,9 +9,38 @@ namespace Icelandic.PublicHolidays.Tests
     public class Tests
     {
         [TestMethod]
-        public void TestInvalidEarlyYear()
+        public void TestCalendarDates()
         {
+            var dates = CalendarDates.Values;
+            var yearDates = (from d in dates select d).GroupBy(x => x.year);
 
+            foreach (var year in yearDates)
+            {
+                var gen = new Generator(year.Key);
+                ValidateStandardDates(gen, year.Key);
+
+                DateTime getter(Generator.HolidayDates holidayDate) =>
+                    year.First(x => x.holidayDate == holidayDate).date;
+
+                Assert.AreEqual(getter(Generator.HolidayDates.Bóndadagurinn), gen.Bóndadagurinn, gen.Bóndadagurinn.ToString());
+                Assert.AreEqual(getter(Generator.HolidayDates.Bolludagur), gen.Bolludagur, gen.Bolludagur.ToString());
+                Assert.AreEqual(getter(Generator.HolidayDates.Sprengidagur), gen.Sprengidagur, gen.Sprengidagur.ToString());
+                Assert.AreEqual(getter(Generator.HolidayDates.Öskudagur), gen.Öskudagur, gen.Öskudagur.ToString());
+                Assert.AreEqual(getter(Generator.HolidayDates.Konudagurinn), gen.Konudagurinn, gen.Konudagurinn.ToString());
+                Assert.AreEqual(getter(Generator.HolidayDates.Pálmasunnudagur), gen.Pálmasunnudagur, gen.Pálmasunnudagur.ToString());
+                Assert.AreEqual(getter(Generator.HolidayDates.Skírdagur), gen.Skírdagur, gen.Skírdagur.ToString());
+                Assert.AreEqual(getter(Generator.HolidayDates.FöstudagurinnLangi), gen.FöstudagurinnLangi, gen.FöstudagurinnLangi.ToString());
+                Assert.AreEqual(getter(Generator.HolidayDates.Páskadagur), gen.Páskadagur, gen.Páskadagur.ToString());
+                Assert.AreEqual(getter(Generator.HolidayDates.SumardagurinnFyrsti), gen.SumardagurinnFyrsti, gen.SumardagurinnFyrsti.ToString());
+                Assert.AreEqual(getter(Generator.HolidayDates.Verkalýðsdagurinn), gen.Verkalýðsdagurinn, gen.Verkalýðsdagurinn.ToString());
+                Assert.AreEqual(getter(Generator.HolidayDates.Mæðradagurinn), gen.Mæðradagurinn, gen.Mæðradagurinn.ToString());
+                Assert.AreEqual(getter(Generator.HolidayDates.Uppstigningardagur), gen.Uppstigningardagur, gen.Uppstigningardagur.ToString());
+                Assert.AreEqual(getter(Generator.HolidayDates.Hvítasunnudagur), gen.Hvítasunnudagur, gen.Hvítasunnudagur.ToString());
+                Assert.AreEqual(getter(Generator.HolidayDates.Sjómannadagurinn), gen.Sjómannadagurinn, gen.Sjómannadagurinn.ToString());
+                Assert.AreEqual(getter(Generator.HolidayDates.FrídagurVerslunarmanna), gen.FrídagurVerslunarmanna, gen.FrídagurVerslunarmanna.ToString());
+                Assert.AreEqual(getter(Generator.HolidayDates.FyrstiVetrardagur), gen.FyrstiVetrardagur, gen.FyrstiVetrardagur.ToString());
+                Assert.AreEqual(getter(Generator.HolidayDates.Feðradagurinn), gen.Feðradagurinn, gen.Feðradagurinn.ToString());
+            }
         }
 
         private void ValidateStandardDates(Generator gen, int year)
@@ -26,6 +55,12 @@ namespace Icelandic.PublicHolidays.Tests
             Assert.AreEqual(new DateTime(year, 12, 25), gen.Jóladagur);
             Assert.AreEqual(new DateTime(year, 12, 26), gen.AnnarÍJólum);
             Assert.AreEqual(new DateTime(year, 12, 31), gen.Gamlársdagur);
+
+            Assert.AreEqual(
+                year >= 1996
+                ? new DateTime(year, 11, 16)
+                : DateTime.MinValue, gen.DagurÍslenskrarTungu);
+
         }
 
         [TestMethod]
@@ -162,6 +197,16 @@ namespace Icelandic.PublicHolidays.Tests
             {
                 var gen = new Generator(data.Year);
                 Assert.AreEqual(data, gen.SumardagurinnFyrsti);
+            }
+        }
+
+        [TestMethod]
+        public void TestBóndagurinn()
+        {
+            foreach (var data in BóndadagurinnDates.Values)
+            {
+                var gen = new Generator(data.Year);
+                Assert.AreEqual(data, gen.Bóndadagurinn);
             }
         }
     }
