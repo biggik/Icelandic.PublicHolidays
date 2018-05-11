@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DateUtils.cs" />
     <Compile Include="EventDate.cs" />
     <Compile Include="Generator.cs" />
     <Compile Include="Solstice.cs" />

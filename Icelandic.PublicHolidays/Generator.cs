@@ -98,14 +98,14 @@ namespace Icelandic.PublicHolidays
         public DateTime Gamlársdagur => Aðfangadagur.AddDays(7);
         public DateTime Nýársdagur => new DateTime(Year, 1, 1);
 
-        public DateTime FrídagurVerslunarmanna => FirstDayAfter(new DateTime(Year, 8, 1), DayOfWeek.Monday);
+        public DateTime FrídagurVerslunarmanna => DateUtils.FirstDayAfter(new DateTime(Year, 8, 1), DayOfWeek.Monday);
 
         public DateTime Vorjafndægur => Solstice.VernalEquinox(Year);
         public DateTime Haustjafndægur => Solstice.AutumnalEquinox(Year);
         public DateTime Sumarsólstöður => Solstice.SummerSolstice(Year);
         public DateTime Vetrarsólstöður => Solstice.WinterSolstice(Year);
 
-        public DateTime SumardagurinnFyrsti => FirstDayAfter(new DateTime(Year, 4, 19), DayOfWeek.Thursday);
+        public DateTime SumardagurinnFyrsti => DateUtils.FirstDayAfter(new DateTime(Year, 4, 19), DayOfWeek.Thursday);
 
         // Rímspillisár þekkist á því að aðfarardagur ársins er laugardagur og næsta ár á eftir er hlaupár
         public bool ErRímspillisÁr =>
@@ -116,7 +116,7 @@ namespace Icelandic.PublicHolidays
         public DateTime FyrstiVetrardagur => 
             ErRímspillisÁr
             ? new DateTime(Year, 10, 28)
-            : FirstDayAfter(new DateTime(Year, 10, 21), DayOfWeek.Saturday);
+            : DateUtils.FirstDayAfter(new DateTime(Year, 10, 21), DayOfWeek.Saturday);
 
         private DateTime Lent => Páskadagur.AddDays(-46);
         public DateTime Bolludagur => Lent.AddDays(-2);
@@ -124,25 +124,25 @@ namespace Icelandic.PublicHolidays
         public DateTime Öskudagur => Lent;
 
         public DateTime Mæðradagurinn => Year >= 1934
-            ? FirstDayAfter(FirstDayAfter(new DateTime(Year, 5, 1), DayOfWeek.Sunday).AddDays(1), DayOfWeek.Sunday)
+            ? DateUtils.FirstDayAfter(DateUtils.FirstDayAfter(new DateTime(Year, 5, 1), DayOfWeek.Sunday).AddDays(1), DayOfWeek.Sunday)
             : DateTime.MinValue;
         public DateTime Feðradagurinn =>
             Year >= 2006
-            ? FirstDayAfter(FirstDayAfter(new DateTime(Year, 11, 1), DayOfWeek.Sunday).AddDays(1), DayOfWeek.Sunday)
+            ? DateUtils.FirstDayAfter(DateUtils.FirstDayAfter(new DateTime(Year, 11, 1), DayOfWeek.Sunday).AddDays(1), DayOfWeek.Sunday)
             : DateTime.MinValue;
 
         public DateTime Bóndadagurinn =>
-            FirstDayAfter(PreviousYear.FyrstiVetrardagur.AddDays(7 * 12), DayOfWeek.Friday);
+            DateUtils.FirstDayAfter(PreviousYear.FyrstiVetrardagur.AddDays(7 * 12), DayOfWeek.Friday);
         public DateTime Konudagurinn =>
-            FirstDayAfter(PreviousYear.FyrstiVetrardagur.AddDays(7 * 17), DayOfWeek.Sunday);
+            DateUtils.FirstDayAfter(PreviousYear.FyrstiVetrardagur.AddDays(7 * 17), DayOfWeek.Sunday);
 
         public DateTime Sjómannadagurinn
         {
             get
             {
-                var candidate = FirstDayAfter(new DateTime(Year, 6, 1), DayOfWeek.Sunday);
+                var candidate = DateUtils.FirstDayAfter(new DateTime(Year, 6, 1), DayOfWeek.Sunday);
                 if (candidate == Hvítasunnudagur)
-                    return FirstDayAfter(candidate.AddDays(1), DayOfWeek.Sunday);
+                    return DateUtils.FirstDayAfter(candidate.AddDays(1), DayOfWeek.Sunday);
                 return candidate;
             }
         }
@@ -249,13 +249,5 @@ namespace Icelandic.PublicHolidays
             }
         }
 
-        private DateTime FirstDayAfter(DateTime date, DayOfWeek dow)
-        {
-            while (date.DayOfWeek != dow)
-            {
-                date = date.AddDays(1);
-            }
-            return date;
-        }
     }
 }
