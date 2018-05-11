@@ -42,6 +42,8 @@
     <Compile Include="DateUtils.cs" />
     <Compile Include="EventDate.cs" />
     <Compile Include="Generator.cs" />
+    <Compile Include="Nordic\NordicMonths.cs" />
+    <Compile Include="Nordic\Norrænt.cs" />
     <Compile Include="Solstice.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Easter.cs" />

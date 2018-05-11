@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Icelandic.PublicHolidays.Nordic;
+using System;
 using System.Collections.Generic;
 using static Icelandic.PublicHolidays.EventDate;
 
@@ -15,6 +16,7 @@ namespace Icelandic.PublicHolidays
             Year = year;
 
             CalculateDates();
+            Norrænt = new Norrænt(this);
         }
 
         public enum HolidayDates
@@ -56,12 +58,10 @@ namespace Icelandic.PublicHolidays
         }
 
         private Generator previousYear;
-        private Generator PreviousYear
+        internal Generator PreviousYear
         {
             get
             {
-
-
                 if (previousYear == null)
                     previousYear = new Generator(Year - 1);
                 return previousYear;
@@ -111,6 +111,16 @@ namespace Icelandic.PublicHolidays
         public bool ErRímspillisÁr =>
             new DateTime(Year - 1, 12, 31).DayOfWeek == DayOfWeek.Saturday
             && DateTime.IsLeapYear(Year + 1);
+
+        // Sumarauki verður þegar aðfarardagur ársins(í hlaupári: seinni aðfarardagurinn) er sunnudagur, 
+        // svo og þegar hann er laugardagur og hlaupár fer í hönd, en þá er rímspillir.
+        // Sumaraukaár eru ýmist á 5 eða 6 ára fresti, en örsjaldan á 7 ára fresti 
+        // (það kemur fyrir einu sinni á hverjum 400 árum).
+        public bool ErSumarauki =>
+            (DateTime.IsLeapYear(Year)
+                ? new DateTime(Year, 1, 1).DayOfWeek == DayOfWeek.Sunday
+                : new DateTime(Year - 1, 12, 31).DayOfWeek == DayOfWeek.Sunday)
+            || ErRímspillisÁr;
 
         // Fyrsti vetrardagur er 28.10 í rímspillisárum, annars fyrsti laugardagur a/eftir 21.10
         public DateTime FyrstiVetrardagur => 
@@ -249,5 +259,6 @@ namespace Icelandic.PublicHolidays
             }
         }
 
+        public Norrænt Norrænt { get; }
     }
 }
