@@ -1,4 +1,4 @@
-﻿using Icelandic.PublicHolidays.Nordic;
+﻿using Icelandic.PublicHolidays.Enums;
 using System;
 using System.Collections.Generic;
 
@@ -27,6 +27,7 @@ namespace Icelandic.PublicHolidays.Tests.Data
                       (NorrænirMánuðir.Mörsugur, 2014, 12, 24),
                       (NorrænirMánuðir.Mörsugur, 2015, 12, 23),
                       (NorrænirMánuðir.Mörsugur, 2016, 12, 21),
+                      (NorrænirMánuðir.Mörsugur, 2018, 12, 26),
 
                       (NorrænirMánuðir.Þorri, 2005, 1, 21),
                       (NorrænirMánuðir.Þorri, 2006, 1, 20),
@@ -41,6 +42,7 @@ namespace Icelandic.PublicHolidays.Tests.Data
                       (NorrænirMánuðir.Þorri, 2015, 1, 23),
                       (NorrænirMánuðir.Þorri, 2016, 1, 22),
                       (NorrænirMánuðir.Þorri, 2017, 1, 20),
+                      (NorrænirMánuðir.Þorri, 2018, 1, 19),
 
                       (NorrænirMánuðir.Góa, 2005, 2, 20),
                       (NorrænirMánuðir.Góa, 2006, 2, 19),
@@ -55,6 +57,7 @@ namespace Icelandic.PublicHolidays.Tests.Data
                       (NorrænirMánuðir.Góa, 2015, 2, 22),
                       (NorrænirMánuðir.Góa, 2016, 2, 21),
                       (NorrænirMánuðir.Góa, 2017, 2, 19),
+                      (NorrænirMánuðir.Góa, 2018, 2, 18),
 
                       (NorrænirMánuðir.Einmánuður, 2005, 3, 22),
                       (NorrænirMánuðir.Einmánuður, 2006, 3, 21),
@@ -69,6 +72,7 @@ namespace Icelandic.PublicHolidays.Tests.Data
                       (NorrænirMánuðir.Einmánuður, 2015, 3, 24),
                       (NorrænirMánuðir.Einmánuður, 2016, 3, 22),
                       (NorrænirMánuðir.Einmánuður, 2017, 3, 21),
+                      (NorrænirMánuðir.Einmánuður, 2018, 3, 20),
 
                       (NorrænirMánuðir.Harpa, 2005, 4, 21),
                       (NorrænirMánuðir.Harpa, 2006, 4, 20),
@@ -83,6 +87,7 @@ namespace Icelandic.PublicHolidays.Tests.Data
                       (NorrænirMánuðir.Harpa, 2015, 4, 23),
                       (NorrænirMánuðir.Harpa, 2016, 4, 21),
                       (NorrænirMánuðir.Harpa, 2017, 4, 20),
+                      (NorrænirMánuðir.Harpa, 2018, 4, 19),
 
                       (NorrænirMánuðir.Skerpla, 2005, 5, 21),
                       (NorrænirMánuðir.Skerpla, 2006, 5, 20),
@@ -97,6 +102,7 @@ namespace Icelandic.PublicHolidays.Tests.Data
                       (NorrænirMánuðir.Skerpla, 2015, 5, 23),
                       (NorrænirMánuðir.Skerpla, 2016, 5, 21),
                       (NorrænirMánuðir.Skerpla, 2017, 5, 20),
+                      (NorrænirMánuðir.Skerpla, 2018, 5, 19),
 
                       (NorrænirMánuðir.Sólmánuður, 2005, 6, 20),
                       (NorrænirMánuðir.Sólmánuður, 2006, 6, 19),
@@ -111,6 +117,7 @@ namespace Icelandic.PublicHolidays.Tests.Data
                       (NorrænirMánuðir.Sólmánuður, 2015, 6, 22),
                       (NorrænirMánuðir.Sólmánuður, 2016, 6, 20),
                       (NorrænirMánuðir.Sólmánuður, 2017, 6, 19),
+                      (NorrænirMánuðir.Sólmánuður, 2018, 6, 18),
 
                       (NorrænirMánuðir.Sumarauki, 2005, 7, 20),
                       (NorrænirMánuðir.Sumarauki, 2006, 7, 19),
@@ -138,7 +145,8 @@ namespace Icelandic.PublicHolidays.Tests.Data
                       (NorrænirMánuðir.Heyannir, 2014, 7, 27),
                       (NorrænirMánuðir.Heyannir, 2015, 7, 26),
                       (NorrænirMánuðir.Heyannir, 2016, 7, 24),
-                      (NorrænirMánuðir.Heyannir, 2017, 7, 30),
+                      (NorrænirMánuðir.Heyannir, 2017, 7, 23), // was 30 in sample data
+                      (NorrænirMánuðir.Heyannir, 2018, 7, 29),
 
                       (NorrænirMánuðir.Tvímánuður, 2005, 8, 23),
                       (NorrænirMánuðir.Tvímánuður, 2006, 8, 22),
@@ -152,7 +160,8 @@ namespace Icelandic.PublicHolidays.Tests.Data
                       (NorrænirMánuðir.Tvímánuður, 2014, 8, 26),
                       (NorrænirMánuðir.Tvímánuður, 2015, 8, 25),
                       (NorrænirMánuðir.Tvímánuður, 2016, 8, 23),
-                      (NorrænirMánuðir.Tvímánuður, 2017, 8, 29),
+                      (NorrænirMánuðir.Tvímánuður, 2017, 8, 22), // was 29 in sample data
+                      (NorrænirMánuðir.Tvímánuður, 2018, 8, 28),
 
                       (NorrænirMánuðir.Haustmánuður, 2005, 9, 22),
                       (NorrænirMánuðir.Haustmánuður, 2006, 9, 21),
@@ -166,7 +175,8 @@ namespace Icelandic.PublicHolidays.Tests.Data
                       (NorrænirMánuðir.Haustmánuður, 2014, 9, 25),
                       (NorrænirMánuðir.Haustmánuður, 2015, 9, 24),
                       (NorrænirMánuðir.Haustmánuður, 2016, 9, 22),
-                      (NorrænirMánuðir.Haustmánuður, 2017, 9, 28),
+                      (NorrænirMánuðir.Haustmánuður, 2017, 9, 21), // was 28 in sample data
+                      (NorrænirMánuðir.Haustmánuður, 2018, 9, 27),
 
                       (NorrænirMánuðir.Gormánuður, 2005, 10, 22),
                       (NorrænirMánuðir.Gormánuður, 2006, 10, 21),
@@ -180,7 +190,8 @@ namespace Icelandic.PublicHolidays.Tests.Data
                       (NorrænirMánuðir.Gormánuður, 2014, 10, 25),
                       (NorrænirMánuðir.Gormánuður, 2015, 10, 24),
                       (NorrænirMánuðir.Gormánuður, 2016, 10, 22),
-                      (NorrænirMánuðir.Gormánuður, 2017, 10, 28),
+                      (NorrænirMánuðir.Gormánuður, 2017, 10, 21), // Was 28 in sample data
+                      (NorrænirMánuðir.Gormánuður, 2018, 10, 27),
 
                       (NorrænirMánuðir.Ýlir, 2005, 11, 21),
                       (NorrænirMánuðir.Ýlir, 2006, 11, 20),
@@ -192,9 +203,10 @@ namespace Icelandic.PublicHolidays.Tests.Data
                       (NorrænirMánuðir.Ýlir, 2012, 11, 26),
                       (NorrænirMánuðir.Ýlir, 2013, 11, 25),
                       (NorrænirMánuðir.Ýlir, 2014, 11, 24),
-                      (NorrænirMánuðir.Ýlir, 2015, 11, 21),
+                      (NorrænirMánuðir.Ýlir, 2015, 11, 23),
                       (NorrænirMánuðir.Ýlir, 2016, 11, 21),
-                      (NorrænirMánuðir.Ýlir, 2017, 11, 27),
+                      (NorrænirMánuðir.Ýlir, 2017, 11, 20), // Was 27 in sample data
+                      (NorrænirMánuðir.Ýlir, 2018, 11, 26),
                 };
 
                 foreach (var (mánuður, year, month, date) in data)

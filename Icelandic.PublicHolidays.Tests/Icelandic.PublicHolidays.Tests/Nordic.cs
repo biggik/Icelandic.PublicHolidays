@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Icelandic.PublicHolidays.Nordic;
+using Icelandic.PublicHolidays.Enums;
 using Icelandic.PublicHolidays.Tests.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -11,19 +10,12 @@ namespace Icelandic.PublicHolidays.Tests
     [TestClass]
     public class Nordic
     {
-        private IEnumerable<DateTime> MonthDates(NorrænirMánuðir mánuður)
+        static IEnumerable<DateTime> MonthDates(NorrænirMánuðir mánuður)
         {
             return from x in NordicDates.Values
                    where x.mánuður == mánuður
+                   orderby x.date
                    select x.date;
-        }
-
-        [TestCategory("Nordic")]
-        [TestMethod]
-        public void Debug()
-        {
-                var gen = new Generator(2017);
-                Assert.AreEqual(new DateTime(2017,9,28), gen.Norrænt.Haustmánuður);
         }
 
         [TestCategory("Nordic")]
@@ -32,8 +24,8 @@ namespace Icelandic.PublicHolidays.Tests
         {
             foreach (var date in MonthDates(NorrænirMánuðir.Þorri))
             {
-                var gen = new Generator(date.Year);
-                Assert.AreEqual(date, gen.Norrænt.Þorri);
+                var dagar = new Dagar(date.Year);
+                Assert.AreEqual(date, dagar.NorræntDagatal.Þorri);
             }
         }
 
@@ -43,8 +35,8 @@ namespace Icelandic.PublicHolidays.Tests
         {
             foreach (var date in MonthDates(NorrænirMánuðir.Góa))
             {
-                var gen = new Generator(date.Year);
-                Assert.AreEqual(date, gen.Norrænt.Góa);
+                var dagar = new Dagar(date.Year);
+                Assert.AreEqual(date, dagar.NorræntDagatal.Góa);
             }
         }
 
@@ -54,8 +46,8 @@ namespace Icelandic.PublicHolidays.Tests
         {
             foreach (var date in MonthDates(NorrænirMánuðir.Einmánuður))
             {
-                var gen = new Generator(date.Year);
-                Assert.AreEqual(date, gen.Norrænt.Einmánuður);
+                var dagar = new Dagar(date.Year);
+                Assert.AreEqual(date, dagar.NorræntDagatal.Einmánuður);
             }
         }
 
@@ -65,8 +57,8 @@ namespace Icelandic.PublicHolidays.Tests
         {
             foreach (var date in MonthDates(NorrænirMánuðir.Harpa))
             {
-                var gen = new Generator(date.Year);
-                Assert.AreEqual(date, gen.Norrænt.Harpa);
+                var dagar = new Dagar(date.Year);
+                Assert.AreEqual(date, dagar.NorræntDagatal.Harpa);
             }
         }
 
@@ -76,8 +68,8 @@ namespace Icelandic.PublicHolidays.Tests
         {
             foreach (var date in MonthDates(NorrænirMánuðir.Skerpla))
             {
-                var gen = new Generator(date.Year);
-                Assert.AreEqual(date, gen.Norrænt.Skerpla);
+                var dagar = new Dagar(date.Year);
+                Assert.AreEqual(date, dagar.NorræntDagatal.Skerpla);
             }
         }
 
@@ -87,8 +79,8 @@ namespace Icelandic.PublicHolidays.Tests
         {
             foreach (var date in MonthDates(NorrænirMánuðir.Sólmánuður))
             {
-                var gen = new Generator(date.Year);
-                Assert.AreEqual(date, gen.Norrænt.Sólmánuður);
+                var dagar = new Dagar(date.Year);
+                Assert.AreEqual(date, dagar.NorræntDagatal.Sólmánuður);
             }
         }
 
@@ -98,8 +90,8 @@ namespace Icelandic.PublicHolidays.Tests
         {
             foreach (var date in MonthDates(NorrænirMánuðir.Heyannir))
             {
-                var gen = new Generator(date.Year);
-                Assert.AreEqual(date, gen.Norrænt.Heyannir);
+                var dagar = new Dagar(date.Year);
+                Assert.AreEqual(date, dagar.NorræntDagatal.Heyannir);
             }
         }
 
@@ -109,8 +101,8 @@ namespace Icelandic.PublicHolidays.Tests
         {
             foreach (var date in MonthDates(NorrænirMánuðir.Tvímánuður))
             {
-                var gen = new Generator(date.Year);
-                Assert.AreEqual(date, gen.Norrænt.Tvímánuður);
+                var dagar = new Dagar(date.Year);
+                Assert.AreEqual(date, dagar.NorræntDagatal.Tvímánuður);
             }
         }
 
@@ -120,8 +112,8 @@ namespace Icelandic.PublicHolidays.Tests
         {
             foreach (var date in MonthDates(NorrænirMánuðir.Haustmánuður))
             {
-                var gen = new Generator(date.Year);
-                Assert.AreEqual(date, gen.Norrænt.Haustmánuður);
+                var dagar = new Dagar(date.Year);
+                Assert.AreEqual(date, dagar.NorræntDagatal.Haustmánuður);
             }
         }
 
@@ -131,8 +123,8 @@ namespace Icelandic.PublicHolidays.Tests
         {
             foreach (var date in MonthDates(NorrænirMánuðir.Gormánuður))
             {
-                var gen = new Generator(date.Year);
-                Assert.AreEqual(date, gen.Norrænt.Gormánuður);
+                var dagar = new Dagar(date.Year);
+                Assert.AreEqual(date, dagar.NorræntDagatal.Gormánuður);
             }
         }
 
@@ -142,8 +134,8 @@ namespace Icelandic.PublicHolidays.Tests
         {
             foreach (var date in MonthDates(NorrænirMánuðir.Ýlir))
             {
-                var gen = new Generator(date.Year);
-                Assert.AreEqual(date, gen.Norrænt.Ýlir);
+                var dagar = new Dagar(date.Year);
+                Assert.AreEqual(date, dagar.NorræntDagatal.Ýlir);
             }
         }
 
@@ -153,8 +145,8 @@ namespace Icelandic.PublicHolidays.Tests
         {
             foreach (var date in MonthDates(NorrænirMánuðir.Mörsugur))
             {
-                var gen = new Generator(date.Year);
-                Assert.AreEqual(date, gen.Norrænt.Mörsugur);
+                var dagar = new Dagar(date.Year);
+                Assert.AreEqual(date, dagar.NorræntDagatal.Mörsugur);
             }
         }
     }
