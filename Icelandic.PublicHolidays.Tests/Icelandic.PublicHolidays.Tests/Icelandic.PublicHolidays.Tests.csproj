@@ -56,6 +56,7 @@
     <Compile Include="Data\BóndadagurinnDates.cs" />
     <Compile Include="Data\NordicDates.cs" />
     <Compile Include="Data\FyrstiVetSumDates.cs" />
+    <Compile Include="Data\FyrstiVetrardagurDates.cs" />
     <Compile Include="Data\SumardagurinnFyrstiDates.cs" />
     <Compile Include="Data\EasterDates.cs" />
     <Compile Include="Nordic.cs" />
