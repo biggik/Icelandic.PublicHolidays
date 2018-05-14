@@ -1,4 +1,4 @@
-﻿namespace Icelandic.PublicHolidays.Nordic
+﻿namespace Icelandic.PublicHolidays.Enums
 {
     public enum NorrænirMánuðir
     {

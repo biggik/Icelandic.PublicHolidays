@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Dagar.cs" />
     <Compile Include="AlmennirFrídagar.cs" />
+    <Compile Include="Enums\NordicMonths.cs" />
     <Compile Include="Norrænt.cs" />
     <Compile Include="Utils\DateUtils.cs" />
     <Compile Include="Enums\Frídagar.cs" />
