@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Icelandic.PublicHolidays
+namespace Icelandic.PublicHolidays.Utils
 {
     internal static class DateUtils
     {

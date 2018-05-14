@@ -1,7 +1,7 @@
 using System;
 using System.Globalization;
 
-namespace Icelandic.PublicHolidays
+namespace Icelandic.PublicHolidays.Utils
 {
     /// <summary>
     /// Calculates Solstice / Equinox for a given year

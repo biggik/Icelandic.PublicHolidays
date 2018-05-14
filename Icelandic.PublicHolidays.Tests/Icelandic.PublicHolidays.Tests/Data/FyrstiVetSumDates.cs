@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Icelandic.PublicHolidaysEnums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,7 +7,7 @@ namespace Icelandic.PublicHolidays.Tests.Data
 {
     static class FyrstiVetSumDates
     {
-        static public IEnumerable<(Generator.HolidayDates holidayDate, DateTime date)> Values
+        static public IEnumerable<(Dagarnir holidayDate, DateTime date)> Values
         {
             // Values from http://www.almanak.hi.is/f2.html, table IV
             get
@@ -56,25 +57,25 @@ namespace Icelandic.PublicHolidays.Tests.Data
                 {
                     foreach (var year in years)
                     {
-                        yield return (Generator.HolidayDates.SumardagurinnFyrsti, new DateTime(1700 + year,  4, C1700_2100.aprilDate));
-                        yield return (Generator.HolidayDates.FyrstiVetrardagur,   new DateTime(1700 + year, 10, C1700_2100.octDate));
-                        yield return (Generator.HolidayDates.SumardagurinnFyrsti, new DateTime(2100 + year,  4, C1700_2100.aprilDate));
-                        yield return (Generator.HolidayDates.FyrstiVetrardagur,   new DateTime(2100 + year, 10, C1700_2100.octDate));
+                        yield return (Dagarnir.SumardagurinnFyrsti, new DateTime(1700 + year,  4, C1700_2100.aprilDate));
+                        yield return (Dagarnir.FyrstiVetrardagur,   new DateTime(1700 + year, 10, C1700_2100.octDate));
+                        yield return (Dagarnir.SumardagurinnFyrsti, new DateTime(2100 + year,  4, C1700_2100.aprilDate));
+                        yield return (Dagarnir.FyrstiVetrardagur,   new DateTime(2100 + year, 10, C1700_2100.octDate));
 
-                        yield return (Generator.HolidayDates.SumardagurinnFyrsti, new DateTime(1800 + year,  4, C1800_2200.aprilDate));
-                        yield return (Generator.HolidayDates.FyrstiVetrardagur,   new DateTime(1800 + year, 10, C1800_2200.octDate));
-                        yield return (Generator.HolidayDates.SumardagurinnFyrsti, new DateTime(2200 + year,  4, C1800_2200.aprilDate));
-                        yield return (Generator.HolidayDates.FyrstiVetrardagur,   new DateTime(2200 + year, 10, C1800_2200.octDate));
+                        yield return (Dagarnir.SumardagurinnFyrsti, new DateTime(1800 + year,  4, C1800_2200.aprilDate));
+                        yield return (Dagarnir.FyrstiVetrardagur,   new DateTime(1800 + year, 10, C1800_2200.octDate));
+                        yield return (Dagarnir.SumardagurinnFyrsti, new DateTime(2200 + year,  4, C1800_2200.aprilDate));
+                        yield return (Dagarnir.FyrstiVetrardagur,   new DateTime(2200 + year, 10, C1800_2200.octDate));
 
-                        yield return (Generator.HolidayDates.SumardagurinnFyrsti, new DateTime(1900 + year,  4, C1900_2300.aprilDate));
-                        yield return (Generator.HolidayDates.FyrstiVetrardagur,   new DateTime(1900 + year, 10, C1900_2300.octDate));
-                        yield return (Generator.HolidayDates.SumardagurinnFyrsti, new DateTime(2300 + year,  4, C1900_2300.aprilDate));
-                        yield return (Generator.HolidayDates.FyrstiVetrardagur,   new DateTime(2300 + year, 10, C1900_2300.octDate));
+                        yield return (Dagarnir.SumardagurinnFyrsti, new DateTime(1900 + year,  4, C1900_2300.aprilDate));
+                        yield return (Dagarnir.FyrstiVetrardagur,   new DateTime(1900 + year, 10, C1900_2300.octDate));
+                        yield return (Dagarnir.SumardagurinnFyrsti, new DateTime(2300 + year,  4, C1900_2300.aprilDate));
+                        yield return (Dagarnir.FyrstiVetrardagur,   new DateTime(2300 + year, 10, C1900_2300.octDate));
 
-                        yield return (Generator.HolidayDates.SumardagurinnFyrsti, new DateTime(2000 + year,  4, C2000_2400.aprilDate));
-                        yield return (Generator.HolidayDates.FyrstiVetrardagur,   new DateTime(2000 + year, 10, C2000_2400.octDate));
-                        yield return (Generator.HolidayDates.SumardagurinnFyrsti, new DateTime(2400 + year,  4, C2000_2400.aprilDate));
-                        yield return (Generator.HolidayDates.FyrstiVetrardagur,   new DateTime(2400 + year, 10, C2000_2400.octDate));
+                        yield return (Dagarnir.SumardagurinnFyrsti, new DateTime(2000 + year,  4, C2000_2400.aprilDate));
+                        yield return (Dagarnir.FyrstiVetrardagur,   new DateTime(2000 + year, 10, C2000_2400.octDate));
+                        yield return (Dagarnir.SumardagurinnFyrsti, new DateTime(2400 + year,  4, C2000_2400.aprilDate));
+                        yield return (Dagarnir.FyrstiVetrardagur,   new DateTime(2400 + year, 10, C2000_2400.octDate));
                     }
                 }
             }

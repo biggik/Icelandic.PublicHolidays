@@ -39,12 +39,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DateUtils.cs" />
-    <Compile Include="EventDate.cs" />
-    <Compile Include="Generator.cs" />
-    <Compile Include="Solstice.cs" />
+    <Compile Include="Dagar.cs" />
+    <Compile Include="AlmennirFrídagar.cs" />
+    <Compile Include="Utils\DateUtils.cs" />
+    <Compile Include="Enums\Frídagar.cs" />
+    <Compile Include="Viðburðardagur.cs" />
+    <Compile Include="AðrirViðburðardagar.cs" />
+    <Compile Include="Enums\Dagarnir.cs" />
+    <Compile Include="Utils\Solstice.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Easter.cs" />
+    <Compile Include="Utils\Easter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="todo.txt" />

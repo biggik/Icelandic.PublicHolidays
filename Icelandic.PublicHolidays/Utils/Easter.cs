@@ -1,7 +1,7 @@
 using System;
 using System.Globalization;
 
-namespace Icelandic.PublicHolidays
+namespace Icelandic.PublicHolidays.Utils
 {
     /// <summary>
     /// Calculates Easter days for a given year
