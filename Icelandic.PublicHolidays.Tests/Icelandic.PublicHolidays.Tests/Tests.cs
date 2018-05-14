@@ -200,6 +200,16 @@ namespace Icelandic.PublicHolidays.Tests
         }
 
         [TestMethod]
+        public void TestVetrardagurinnFyrsti()
+        {
+            foreach (var data in FyrstiVetrardagurDates.Values)
+            {
+                var dagar = new Dagar(data.Year);
+                Assert.AreEqual(data, dagar.AðrirViðburðardagar.FyrstiVetrardagur);
+            }
+        }
+
+        [TestMethod]
         public void TestSumarOgVetrardagur()
         {
             foreach (var year in FyrstiVetSumDates.Values.GroupBy(x => x.date.Year))
