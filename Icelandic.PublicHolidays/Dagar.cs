@@ -16,6 +16,7 @@ namespace Icelandic.PublicHolidays
 
             frídagar = new Lazy<AlmennirFrídagar>(() => new AlmennirFrídagar(this));
             aðrir = new Lazy<AðrirViðburðardagar>(() => new AðrirViðburðardagar(this));
+            norrænt = new Lazy<Norrænt>(() => new Norrænt(this));
         }
 
         readonly Lazy<Dagar> fyrraÁr;
@@ -28,6 +29,9 @@ namespace Icelandic.PublicHolidays
 
         readonly Lazy<AlmennirFrídagar> frídagar;
         public AlmennirFrídagar AlmennirFrídagar => frídagar.Value;
+
+        readonly Lazy<Norrænt> norrænt;
+        public Norrænt NorræntDagatal => norrænt.Value;
 
         internal readonly Lazy<DateTime> páskadagur;
 

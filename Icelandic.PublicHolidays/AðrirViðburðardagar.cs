@@ -13,6 +13,7 @@ namespace Icelandic.PublicHolidays
             this.dagar = dagar;
 
             allir = new Lazy<IEnumerable<Viðburðardagur>>(Initialize);
+            fyrstiVetrarDagur = new Lazy<DateTime>(FinnaFyrstaVetrardag);
         }
 
         public DateTime Pálmasunnudagur => dagar.páskadagur.Value.AddDays(-7);
@@ -34,10 +35,13 @@ namespace Icelandic.PublicHolidays
         public DateTime Vetrarsólstöður => Solstice.WinterSolstice(dagar.Ár);
 
         // Fyrsti vetrardagur er 28.10 í rímspillisárum, annars fyrsti laugardagur á/eftir 21.10
-        public DateTime FyrstiVetrardagur => 
+        DateTime FinnaFyrstaVetrardag() =>
             dagar.ErRímspillisÁr
             ? new DateTime(dagar.Ár, 10, 28)
             : DateUtils.FirstDayAfter(new DateTime(dagar.Ár, 10, 21), DayOfWeek.Saturday);
+
+        Lazy<DateTime> fyrstiVetrarDagur;
+        public DateTime FyrstiVetrardagur => fyrstiVetrarDagur.Value;
 
         private DateTime Lent => dagar.AlmennirFrídagar.Páskadagur.AddDays(-46);
         public DateTime Bolludagur => Lent.AddDays(-2);
