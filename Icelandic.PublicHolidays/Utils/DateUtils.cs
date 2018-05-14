@@ -12,5 +12,8 @@ namespace Icelandic.PublicHolidays.Utils
             }
             return date;
         }
+
+        internal static DateTime FirstDateAfterWeeks(DateTime dt, int weeks, DayOfWeek dow) =>
+            FirstDayAfter(dt.AddDays(7 * weeks), dow);
     }
 }
