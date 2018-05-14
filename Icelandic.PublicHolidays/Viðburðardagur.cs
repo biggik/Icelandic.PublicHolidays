@@ -1,4 +1,4 @@
-﻿using Icelandic.PublicHolidaysEnums;
+﻿using Icelandic.PublicHolidays.Enums;
 using System;
 
 namespace Icelandic.PublicHolidays

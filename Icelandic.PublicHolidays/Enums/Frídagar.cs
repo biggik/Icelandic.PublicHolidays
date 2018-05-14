@@ -1,4 +1,4 @@
-﻿namespace Icelandic.PublicHolidaysEnums
+﻿namespace Icelandic.PublicHolidays.Enums
 {
     public enum Frídagur
     {

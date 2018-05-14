@@ -1,5 +1,5 @@
 ﻿using Icelandic.PublicHolidays.Utils;
-using Icelandic.PublicHolidaysEnums;
+using Icelandic.PublicHolidays.Enums;
 using System;
 using System.Collections.Generic;
 

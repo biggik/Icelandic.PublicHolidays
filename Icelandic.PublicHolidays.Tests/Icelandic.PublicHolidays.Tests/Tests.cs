@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Icelandic.PublicHolidays.Tests.Data;
-using Icelandic.PublicHolidaysEnums;
+using Icelandic.PublicHolidays.Enums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Icelandic.PublicHolidays.Tests
