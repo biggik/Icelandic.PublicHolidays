@@ -1,0 +1,192 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+
+    PublicHolidays.Viðburðardagur[] fridagar = Model.Dagar.AlmennirFrídagar.Allir.ToArray();
+}
+@functions{
+    public string Description(PublicHolidays.Viðburðardagur[] fridagar, DateTime day)
+    {
+        var found = fridagar.Where(x => x.Dagsetning == day).FirstOrDefault();
+        if (found != null) return found.Nafn;
+        return "";
+    }
+    public string DayClass(PublicHolidays.Viðburðardagur[] fridagar, int dayOfMonth)
+    {
+        var lysing = Description(fridagar, new DateTime(Model.Year, Model.Month.Value, dayOfMonth));
+        return string.IsNullOrEmpty(lysing) ? "calendar__day" : "calendar__public_holiday";
+    }
+    public int FirstDay(DayOfWeek dow)
+    {
+        switch (dow)
+        {
+            case DayOfWeek.Monday: return 0;
+            case DayOfWeek.Tuesday: return 1;
+            case DayOfWeek.Wednesday: return 2;
+            case DayOfWeek.Thursday: return 3;
+            case DayOfWeek.Friday: return 4;
+            case DayOfWeek.Saturday: return 5;
+            case DayOfWeek.Sunday: return 6;
+        }
+        throw new ArgumentException("Invalid dow");
+    }
+}
+
+<div class="wrapper">
+    <center>
+        <form method="POST">
+            <div class="CalendarHeading">
+                <div class="row">
+                    <div class="col-sm-2">
+                        @if (Model.Month.HasValue)
+                        {
+                            <input type="submit" asp-route-year="@(Model.Year - 1)" asp-route-month="@Model.Month" asp-page-handler="Calendar" value="@(Model.Year - 1)" />
+                        }
+                        else
+                        {
+                            <input type="submit" asp-route-year="@(Model.Year - 1)" asp-page-handler="GetYear" value="@(Model.Year - 1)" />
+                        }
+                    </div>
+                    <div class="col-sm-8">
+                        <span>
+                            <input type="submit" asp-route-year="@(Model.Year)" asp-page-handler="GetYear" value="@(Model.Year)" />
+                        </span>
+                    </div>
+                    <div class="col-sm-2">
+                        @if (Model.Month.HasValue)
+                        {
+                            <input type="submit" asp-route-year="@(Model.Year + 1)" asp-route-month="@Model.Month" asp-page-handler="Calendar" value="@(Model.Year + 1)" />
+                        }
+                        else
+                        {
+                            <input type="submit" asp-route-year="@(Model.Year + 1)" asp-route-month="@Model.Month" asp-page-handler="GetYear" value="@(Model.Year + 1)" />
+                        }
+                    </div>
+                </div>
+            </div>
+        </form>
+    </center>
+    <main>
+        @if (Model.Month.HasValue)
+        {
+            var dt = new DateTime(Model.Year, Model.Month.Value, 1);
+            int firstDay = FirstDay(dt.DayOfWeek); // Sunday = 0 and from thereon
+            int lastDay = DateTime.DaysInMonth(Model.Year, Model.Month.Value);
+            int dayOfMonth = 1;
+            var monthName = System.Globalization.CultureInfo.GetCultureInfo("is-IS").DateTimeFormat.MonthNames[Model.Month.Value - 1];
+
+            var prevYear = Model.Month.Value > 1 ? Model.Year : Model.Year - 1;
+            var prevMonth = Model.Month.Value <= 1 ? 12 : Model.Month.Value - 1;
+            var prevLabel = System.Globalization.CultureInfo.GetCultureInfo("is-IS").DateTimeFormat.MonthNames[prevMonth - 1]
+                + (prevYear == Model.Year ? "" : (" " + prevYear));
+
+            var nextYear = Model.Month.Value < 12 ? Model.Year : Model.Year + 1;
+            var nextMonth = Model.Month.Value < 12 ? Model.Month.Value + 1 : 1;
+            var nextLabel = System.Globalization.CultureInfo.GetCultureInfo("is-IS").DateTimeFormat.MonthNames[nextMonth - 1]
+                + (nextYear == Model.Year ? "" : (" " + nextYear));
+
+            <div class="CalendarHeading">
+                <form method="POST">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <input class="month" type="submit" asp-route-year="@prevYear" asp-route-month="@prevMonth" asp-page-handler="Calendar" value="@prevLabel" />
+                        </div>
+                        <div class="col-sm-8">
+                            <span>@monthName</span>
+                        </div>
+                        <div class="col-sm-2">
+                            <input class="month" type="submit" asp-route-year="@nextYear" asp-route-month="@nextMonth" asp-page-handler="Calendar" value="@nextLabel" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="calendar">
+                <div class="calendar__header">
+                    @{
+                        var dayNames = System.Globalization.CultureInfo.GetCultureInfo("is-IS").DateTimeFormat.DayNames;
+
+                        for (int i = 0; i < 7; i++)
+                        {
+                            <div class="calendar__dayheader">@dayNames[(i + 1) % 7].Substring(0, 3)</div>
+                        }
+                    }
+                </div>
+
+                @{
+                    var daysInMonth = DateTime.DaysInMonth(prevYear, prevMonth);
+                    while (dayOfMonth <= lastDay)
+                    {
+                        <div class="calendar__week">
+                            @for (int i = 0; i < firstDay; i++)
+                            {
+                                <div class="calendar__otherday">@(daysInMonth - (firstDay - i) + 1)</div>
+                            }
+                            @for (int i = firstDay; i < 7; i++)
+                            {
+                                if (dayOfMonth++ <= lastDay)
+                                {
+                                    var lysing = Description(fridagar, new DateTime(Model.Year, Model.Month.Value, dayOfMonth - 1));
+                                    var clazz = string.IsNullOrEmpty(lysing) ? "calendar__day" : "calendar__public_holiday";
+                                    <div class="@clazz">
+                                        <span class="DayOfMonth">@(dayOfMonth - 1)</span>
+                                        @if (!string.IsNullOrWhiteSpace(lysing))
+                                        {
+                                            <span class="DayDescription">@lysing</span>
+                                        }
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="calendar__otherday">@(dayOfMonth - lastDay - 1)</div>
+                                }
+                            }
+                            @{
+                                firstDay = 0;
+                            }
+                        </div>
+                    }
+                }
+            </div>
+
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-sm-2">
+                    <h3>Dagatöl</h3>
+                    <form method="POST">
+                        @{
+                            var monthNames = System.Globalization.CultureInfo.GetCultureInfo("is-IS").DateTimeFormat.MonthNames;
+                            for (int i = 1; i <= 12; i++)
+                            {
+                                <input class="month" type="submit" formtarget="_blank" asp-route-year="@Model.Year" asp-route-month="@i" asp-page-handler="Calendar" value="@monthNames[i-1]" />
+                                <br />
+                            }
+                        }
+                    </form>
+                </div>
+                <div class="col-sm-5">
+                    <h3>Almennir frídagar</h3>
+                    <div>
+                        @foreach (var d in Model.Dagar.AlmennirFrídagar.Allir)
+                        {
+                            <span class="date">@d.Nafn&nbsp;-&nbsp;@d.Dagsetning.ToString("d. MMMMMMMMMMMM")&nbsp;&nbsp;(@d.Dagsetning.ToString("ddd"))</span><br />
+                        }
+                    </div>
+                </div>
+                <div class="col-sm-5">
+
+                    <h3>Aðrir viðburðardagar</h3>
+                    <div>
+                        @foreach (var d in Model.Dagar.AðrirViðburðardagar.Allir)
+                        {
+                            <span class="date">@d.Nafn&nbsp;-&nbsp;@d.Dagsetning.ToString("d. MMMMMMMMMMMM")&nbsp;&nbsp;(@d.Dagsetning.ToString("ddd"))</span><br />
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </main>
+</div>

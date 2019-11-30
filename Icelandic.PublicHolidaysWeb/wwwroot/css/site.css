@@ -1,0 +1,175 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+}
+
+// from https://codepen.io/afontcu/pen/bapBxv
+
+.wrapper {
+    display: grid;
+    grid-template-rows: 70px 1fr 70px;
+    grid-template-columns: 1fr;
+    grid-template-areas: "sidebar" "content";
+    width: 100vw; /* unnecessary, but let's keep things consistent */
+    height: 100vh;
+}
+
+@media screen and (min-width: 850px) {
+    .wrapper {
+        grid-template-columns: 200px 5fr;
+        grid-template-rows: 1fr;
+        grid-template-areas: "sidebar content";
+    }
+}
+
+main {
+    grid-area: content;
+    padding: 48px;
+}
+
+.month {
+    margin-bottom: 0.3em;
+    width: 100%
+}
+.date {
+    color: black;
+}
+
+.calendar {
+}
+
+.calendar__week,
+.calendar__header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.calendar__week {
+    grid-auto-rows: 100px;
+    text-align: right;
+}
+
+.calendar__header {
+    grid-auto-rows: 50px;
+    align-items: center;
+    text-align: center;
+}
+
+body {
+    font-family: Montserrat;
+    font-weight: 100;
+    color: #A8B2B9;
+}
+
+main {
+    background-color: #FCFBFC;
+}
+
+.calendar__dayheader,
+.calendar__otherday,
+.calendar__day,
+.calendar__public_holiday {
+    padding: 16px;
+}
+
+.calendar__otherday {
+    background-color: whitesmoke;
+}
+
+.calendar {
+    background-color: white;
+    border: 1px solid #e1e1e1;
+}
+
+.calendar__header > div {
+    text-transform: uppercase;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.calendar__dayheader,
+.calendar__day,
+.calendar__otherday,
+.calendar__public_holiday {
+    border-right: 1px solid #e1e1e1;
+    border-top: 1px solid #e1e1e1;
+    position: relative;
+}
+
+    .calendar__day:last-child,
+    .calendar__otherday:last-child,
+    .calendar__public_holiday:last-child {
+        border-right: 0;
+    }
+  
+.CalendarHeading {
+    text-align: center;
+}
+    .CalendarHeading span {
+        font-size: 24pt;
+    }
+    .CalendarHeading input {
+        background:white;
+    }
+.DayOfMonth {
+}
+
+.DayDescription {
+    position: absolute;
+    color: maroon;
+    left: 2px;
+    bottom: 2px;
+    font-size: smaller;
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Icelandic.PublicHolidays</id>
+    <version>$version$</version>
+    <title>Icelandi Public Holidays</title>
+    <authors>Status ehf, Birgir Kristmannsson</authors>
+    <owners>Birgir Kristmannsson</owners>
+    <licenseUrl>https://github.com/biggik/Icelandic.PublicHolidays/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/biggik/Icelandic.PublicHolidays</projectUrl>
+    <iconUrl></iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A simple library that calculates public holidays, as well as some other common dates, for Iceland.</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright &#x00A9; Status ehf.  All rights reserved.</copyright>
+    <tags>public holidays iceland</tags>
+  </metadata>
+  <files>
+	<file src="Icelandic.PublicHolidays\bin\$configuration$\Icelandic.PublicHolidays.dll" target="lib\net40\" />
+  </files>
+</package>
