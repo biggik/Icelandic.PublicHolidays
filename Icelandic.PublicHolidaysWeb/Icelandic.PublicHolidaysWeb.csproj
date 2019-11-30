@@ -3,6 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <Version>1.1.0</Version>
+    <Company>Status ehf</Company>
+    <Description>Sample website for Icelandic.PublicHolidays</Description>
   </PropertyGroup>
 
 
